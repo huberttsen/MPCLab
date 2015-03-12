@@ -1,31 +1,38 @@
 package com.mpc.objects;
 
+import java.awt.Rectangle;
+import java.awt.Polygon;
+
 import org.newdawn.slick.*;
-import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.geom.*;
+import org.newdawn.slick.particles.*;
+import org.newdawn.slick.svg.inkscape.PolygonProcessor;
 
 public class Cannon {
 
 	// protected float x;
 	protected float angleY;
 	protected float maxSpeed;
+	protected float xPos;
+	protected float yPos;
+	protected String projectileFileName;
 
-	public Cannon(String cannonFileName) {
+	public Cannon(String cannonFileName, String projectileFileName, float xPos, float yPos,
+			float angleY) {
 		// this.x = 0;
-		
-		this.angleY = 0;
+		super();
+		this.angleY = angleY;
+		this.xPos = xPos;
+		this.yPos = yPos;
+		this.projectileFileName = projectileFileName;
+
 	}
 
-	// public void update(float newX, float newY){
-	// this.angleY = newY;
-	//
-	// }
-
-	public void shoot(float locX, float locY, float maxSpeed, Projectile projectile) {
-		float angle = (float) Math.atan2(locX, locY);
-		Vector2f speed = new Vector2f(
-				(float) Math.cos(Math.toRadians(angle)) * maxSpeed,
-				(float) Math.sin(Math.toRadians(angle)) * maxSpeed);
-		
+	public void release(){
+		Projectile projectile = new Projectile(this.projectileFileName, xPos, yPos, maxSpeed, angleY);
+		projectile.shoot();
 	}
+
+	
 
 }

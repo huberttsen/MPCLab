@@ -7,35 +7,30 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 //
 import org.newdawn.slick.particles.*;
+
 //import slick.OpenShooter.game.entities.SuperObject;
 
-public abstract class Projectile {
+public class Projectile {
 	protected Image sprite = null;
 	protected float initX;
 	protected float initY;
 	protected float velY;
 	protected float velX;
-	protected float endX;
-	protected float endY;
+	protected float gravity = 20f;
+
 	protected float x;
 	protected float y;
 
-	public Projectile(String projectileFileName, float initX, float initY, 
-				float endX, float endY){
+	public Projectile(String projectileFileName, float initX, float initY,
+			float power, float angle) {
+
+		this.x = initX;
+		this.y = initY;
+
+		this.velX = (float) (Math.cos(angle) * power);
 		
-//		float vely = 8;
-//		float velx = 0;
-//		this.x = x + velx;
-////		this.y = y - vely;
-//		this.y = y;
-		this.initX = initX;
-		this.initY = initY;
-		this.endX = endX;
-		this.endY = endY;
-		
-		
-		this.velX = endY - initX; 
-		
+		this.velY = (float) (Math.sin(angle) * power);
+
 		try {
 			sprite = new Image(projectileFileName);
 		} catch (SlickException e) {
@@ -43,30 +38,34 @@ public abstract class Projectile {
 			System.exit(0);
 		}
 	}
-	
-	public void draw() {
+
+	public void shoot() {
 		
-		y-=velY;
-		sprite.draw(x, y);
+		while (true){
+			velY -= gravity;
+			y += velY;
+			x += velX;
+		}
 	}
 
-//	@Override
+	// @Override
 	public int getWidth() {
 		return sprite.getWidth();
 	}
 
-//	@Override
+	// @Override
 	public int getHeight() {
 		return sprite.getHeight();
 	}
 	
+
 	public boolean intersects(Target target) {
-		Rectangle rect = new Rectangle(x, y, sprite.getWidth(), sprite.getHeight());
-		
-		if(rect.intersects(target.getRect())){
+		Rectangle rect = new Rectangle(x, y, sprite.getWidth(),
+				sprite.getHeight());
+
+		if (rect.intersects(target.getRect())) {
 			return true;
 		}
-		
 		return false;
 	}
 

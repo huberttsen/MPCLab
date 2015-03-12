@@ -14,18 +14,9 @@ public class Target {
 	
 	public Target(String targetFileName, float x, float y){
 		
-		float vely = 8;
-		float velx = 0;
-		this.x = x + velx;
-//		this.y = y - vely;
+		this.x = x;
 		this.y = y;
 		
-		try {
-			target = new Image(targetFileName);
-		} catch (SlickException e) {
-			e.printStackTrace();
-			System.exit(0);
-		}
 	}
 	public boolean intersects(Projectile projectile) {
 		Rectangle targ = new Rectangle(x, y, target.getWidth(), target.getHeight());
