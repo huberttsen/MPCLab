@@ -12,24 +12,26 @@ public class Cannon {
 
 	// protected float x;
 	protected float angleY;
-	protected float maxSpeed;
+	protected float power;
 	protected float xPos;
 	protected float yPos;
 	protected String projectileFileName;
 
 	public Cannon(String cannonFileName, String projectileFileName, float xPos, float yPos,
-			float angleY) {
+			float angleY, float power) {
 		// this.x = 0;
 		super();
 		this.angleY = angleY;
 		this.xPos = xPos;
 		this.yPos = yPos;
 		this.projectileFileName = projectileFileName;
+		this.power = power;
+		
 
 	}
 
 	public void release(){
-		Projectile projectile = new Projectile(this.projectileFileName, xPos, yPos, maxSpeed, angleY);
+		Projectile projectile = new Projectile(this.projectileFileName, xPos, yPos, power, angleY);
 		projectile.shoot();
 	}
 
