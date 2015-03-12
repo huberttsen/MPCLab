@@ -1,0 +1,40 @@
+package com.mpc.objects;
+
+import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.particles.*;
+
+public class Cannon {
+
+	// protected float x;
+	protected float angleY;
+	protected float maxSpeed;
+	protected float xPos;
+	protected float yPos;
+
+	public Cannon(String cannonFileName, String projectileFileName, float xPos, float yPos,
+			float angle) {
+		// this.x = 0;
+		super();
+		this.angleY = 0;
+		this.xPos = xPos;
+		this.yPos = yPos;
+
+	}
+
+	public void shoot(){
+		Projectile projectile = new Projectile(projectileFileName, xPos, yPos, maxSpeed, angleY);
+		while (isCollisionWith(projectile) != true){
+			
+		}
+		
+	}
+
+	
+	
+//	public Projectile createParticle(){
+//		return new Projectile()
+//	}
+
+
+}

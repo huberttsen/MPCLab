@@ -1,0 +1,107 @@
+package com.mpc.objects;
+
+import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.particles.*;
+
+public class Cannon {
+
+	// protected float x;
+	protected float angleY;
+	protected float maxSpeed;
+	protected float xPos;
+	protected float yPos;
+
+	public Cannon(String cannonFileName, String projectileFileName, float xPos, float yPos) {
+		// this.x = 0;
+		super();
+		this.angleY = 0;
+		this.xPos = xPos;
+		this.yPos = yPos;
+		
+	}
+
+	public void shoot(){
+		public Projectile(String projectileFileName, float initX, float initY,
+				float power, float angle) {
+			
+		}
+		Projectile projectile = new Projectile(projectileFileName, xPos, yPos, maxSpeed, )
+		while (isCollisionWith(projectile) != true){
+			
+		}
+		
+	}
+
+	
+//	public Projectile createParticle(){
+//		return new Projectile()
+//	}
+
+	@Override
+	public boolean completed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Image getImage() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean isOriented() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void resetState() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setEnabled(boolean arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(ParticleSystem arg0, int arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateParticle(Particle arg0, int arg1) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean useAdditive() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean usePoints(ParticleSystem arg0) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void wrapUp() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

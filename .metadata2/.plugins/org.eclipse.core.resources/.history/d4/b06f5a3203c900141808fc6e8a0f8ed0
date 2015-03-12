@@ -1,0 +1,32 @@
+package com.mpc.objects;
+
+import org.newdawn.slick.*;
+import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.particles.*;
+
+public class Cannon extends ParticleSystem {
+
+	// protected float x;
+	protected float angleY;
+	protected float maxSpeed;
+
+	public Cannon(String cannonFileName) {
+		// this.x = 0;
+		super();
+		this.angleY = 0;
+	}
+
+	// public void update(float newX, float newY){
+	// this.angleY = newY;
+	//
+	// }
+
+	public void shoot(float locX, float locY, float maxSpeed, Projectile projectile) {
+		float angle = (float) Math.atan2(locX, locY);
+		Vector2f speed = new Vector2f(
+				(float) Math.cos(Math.toRadians(angle)) * maxSpeed,
+				(float) Math.sin(Math.toRadians(angle)) * maxSpeed);
+		
+	}
+
+}

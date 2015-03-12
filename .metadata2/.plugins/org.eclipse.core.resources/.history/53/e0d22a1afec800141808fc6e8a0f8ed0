@@ -1,0 +1,45 @@
+package com.mpc.objects;
+
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
+
+public class Target {
+	protected Image target = null;
+	protected float x;
+	protected float y;
+	protected float vely;
+	protected float velx;
+	
+	
+	public Target(String targetFileName, float x, float y){
+		
+		float vely = 8;
+		float velx = 0;
+		this.x = x + velx;
+//		this.y = y - vely;
+		this.y = y;
+		
+		try {
+			target = new Image(targetFileName);
+		} catch (SlickException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}
+	public boolean intersects(Projectile projectile) {
+		Rectangle rect = new Rectangle(x, y, target.getWidth(), target.getHeight());
+		
+		if(projectile.intersects(target.getRect())){
+			return true;
+		}
+		
+		return false;
+	}
+	
+	public Rectangle getRect() {
+		return new Rectangle(x, y, target.getWidth(), target.getHeight());
+	}
+	
+	
+}
