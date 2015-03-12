@@ -1,5 +1,6 @@
 package com.mpc.game;
 
+import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
@@ -12,8 +13,8 @@ public class Game extends StateBasedGame {
 	
 	public Game(String name) {
 		super(name);
-		this.addState(Menu(menu));
-		this.addState(Play(play));
+		this.addState(new Menu());
+		this.addState(new Play());
 		
 	}
 
@@ -29,15 +30,11 @@ public class Game extends StateBasedGame {
 		AppGameContainer ac;
 		try {
 			ac = new AppGameContainer(new Game(name));
-			ac.setDisplayMode(1600, 900, true);
+			ac.setDisplayMode(1280, 720, false);
 			ac.start();
 		} catch (SlickException e) {
 			e.printStackTrace();
 		}
 	}
-
-	
-	
-	
 
 }

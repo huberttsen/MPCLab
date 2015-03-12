@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.applet.Applet"/>
+<fullyQualifiedTypeName name="javax.swing.JApplet"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.state.StateBasedGame"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.AppGameContainer"/>
+<fullyQualifiedTypeName name="org.newdawn.slick.state.BasicGameState"/>
+</qualifiedTypeNameHistroy>
