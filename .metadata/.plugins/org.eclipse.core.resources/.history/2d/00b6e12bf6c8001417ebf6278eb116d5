@@ -1,0 +1,29 @@
+package com.mpc.game;
+
+import org.newdawn.slick.GameContainer;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.state.StateBasedGame;
+
+public class Game extends StateBasedGame {
+
+	private static final String name = "Blaster";
+	private int menu = 0;
+	private int play = 1;
+	
+	public Game(String name) {
+		super(name);
+		
+	}
+
+	public static void main(String[] args) {
+		
+
+	}
+
+	@Override
+	public void initStatesList(GameContainer arg0) throws SlickException {
+		
+		
+	}
+
+}

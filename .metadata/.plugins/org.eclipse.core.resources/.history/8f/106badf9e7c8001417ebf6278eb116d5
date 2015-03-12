@@ -1,0 +1,17 @@
+package com.mpc.game;
+
+import java.applet.Applet;
+
+public class Core extends Applet implements Runnable {
+
+	private static final long serialVersionUID = -7999454173286768596L;
+	private JFrame frame;
+	
+	
+	@Override
+	public void run() {
+		
+		
+	}
+
+}

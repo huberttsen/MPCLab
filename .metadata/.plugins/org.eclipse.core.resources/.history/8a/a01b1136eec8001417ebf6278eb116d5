@@ -1,0 +1,12 @@
+package com.mpc.game;
+
+import org.newdawn.slick.state.StateBasedGame;
+
+public class Game extends StateBasedGame {
+
+	public static void main(String[] args) {
+		
+
+	}
+
+}
