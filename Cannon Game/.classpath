@@ -1,30 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-<<<<<<< HEAD
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/jars/dyn4j-3.1.11.jar"/>
 	<classpathentry kind="lib" path="lib/jars/lwjgl_util_applet.jar"/>
 	<classpathentry kind="lib" path="lib/jars/lwjgl_util.jar"/>
 	<classpathentry kind="lib" path="lib/jars/lwjgl.jar">
-=======
-	<classpathentry kind="src" path="src">
-		<attributes>
-			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/huberttsen/MPCLab/lwjgl/native"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
-	<classpathentry kind="lib" path="/Users/huberttsen/Documents/MPCLab/slick/lib/slick.jar"/>
-	<classpathentry kind="lib" path="/Users/huberttsen/Documents/MPCLab/lwjgl/jar/lwjgl.jar">
->>>>>>> 64d4fcadc72cab519e648622c92a9e0772966d67
 		<attributes>
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/Users/nhiquach/MPCLab/Cannon Game/lib/native/macosx"/>
 		</attributes>
 	</classpathentry>
-<<<<<<< HEAD
 	<classpathentry kind="lib" path="lib/jars/slick.jar"/>
-=======
-	<classpathentry kind="lib" path="/Users/huberttsen/Documents/MPCLab/lib/dyn4j-3.1.11.jar"/>
->>>>>>> 64d4fcadc72cab519e648622c92a9e0772966d67
 	<classpathentry kind="output" path="bin"/>
 </classpath>
