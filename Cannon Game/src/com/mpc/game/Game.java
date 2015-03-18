@@ -38,8 +38,8 @@ public class Game extends StateBasedGame {
 	public void initStatesList(GameContainer gc) throws SlickException {
 		this.getState(menu).init(gc, this);
 		this.getState(play).init(gc, this);
-//		this.enterState(menu); Changed this so I dont have to keep clicking. Change back
-		this.enterState(play); //Delete this after debugging
+		this.enterState(menu); 
+//		this.enterState(play); //Delete this after debugging
 
 	}
 
