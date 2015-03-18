@@ -8,33 +8,43 @@ import org.newdawn.slick.geom.*;
 import org.newdawn.slick.particles.*;
 import org.newdawn.slick.svg.inkscape.PolygonProcessor;
 
-public class Cannon {
+public class Cannon extends ConfigurableEmitter {
+//public class Cannon extends Image{
 
 	// protected float x;
-	protected float angleY;
+	protected float angle;
 	protected float power;
 	protected float xPos;
 	protected float yPos;
-	protected String projectileFileName;
+	protected static String projectileFileName;
 
-	public Cannon(String cannonFileName, String projectileFileName, float xPos, float yPos,
-			float angleY, float power) {
+//	public Cannon(String cannonFileName, float xPos, float yPos, float angle,
+//			float power) {
 		// this.x = 0;
-		super();
-		this.angleY = angleY;
-		this.xPos = xPos;
-		this.yPos = yPos;
-		this.projectileFileName = projectileFileName;
-		this.power = power;
-		
+		// super(cannonFileName);
+//		this.angle = angle;
+//		this.xPos = xPos;
+//		this.yPos = yPos;
+//		this.power = power;
+//	}
 
+	public Cannon(String name){
+		super(projectileFileName);		
 	}
 
-	public void release(){
-		Projectile projectile = new Projectile(this.projectileFileName, xPos, yPos, power, angleY);
+	public void release() {
+		Projectile projectile = new Projectile(projectileFileName, xPos,
+				yPos, angle, power);
 		projectile.shoot();
 	}
 
-	
+	public Vector2f getLocation() {
+		return new Vector2f(xPos, yPos);
+	}
+
+	public void setPosition(float x, float y) {
+		xPos = x;
+		yPos = y;
+	}
 
 }

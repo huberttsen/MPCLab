@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry excluding="resources/|resources/" kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/jars/dyn4j-3.1.11.jar"/>
 	<classpathentry kind="lib" path="lib/jars/lwjgl_util_applet.jar"/>

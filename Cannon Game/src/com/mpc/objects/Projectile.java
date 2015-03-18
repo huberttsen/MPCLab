@@ -21,9 +21,13 @@ public class Projectile {
 	protected float x;
 	protected float y;
 
+	public Projectile(){
+		
+	}
+	
 	public Projectile(String projectileFileName, float initX, float initY,
 			float power, float angle) {
-
+		Projectile bullet = new Projectile();
 		this.x = initX;
 		this.y = initY;
 
@@ -38,10 +42,14 @@ public class Projectile {
 			System.exit(0);
 		}
 	}
-
+	
+	public void render() {
+		
+	}
+	
 	public void shoot() {
 		
-		while (true){
+		while (y != 700){
 			velY -= gravity;
 			y += velY;
 			x += velX;
