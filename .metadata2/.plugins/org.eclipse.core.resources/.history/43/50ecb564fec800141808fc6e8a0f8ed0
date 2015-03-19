@@ -1,0 +1,66 @@
+package com.mpc.objects;
+
+//package slick.OpenShooter.game.entities.projectiles;
+
+import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
+//
+import org.newdawn.slick.particles.*;
+//import slick.OpenShooter.game.entities.SuperObject;
+
+public abstract class Projectile {
+	protected Image sprite = null;
+	protected float x;
+	protected float y;
+	protected float vely;
+	protected float velx;
+
+	public Projectile(String projectileFileName, float initX, float initY, 
+				float endX, float endY){
+		
+//		float vely = 8;
+//		float velx = 0;
+//		this.x = x + velx;
+////		this.y = y - vely;
+//		this.y = y;
+		
+		try {
+			sprite = new Image(projectileFileName);
+		} catch (SlickException e) {
+			e.printStackTrace();
+			System.exit(0);
+		}
+	}
+	
+	public void draw() {
+		
+		y-=vely;
+		sprite.draw(x, y);
+	}
+
+//	@Override
+	public int getWidth() {
+		return sprite.getWidth();
+	}
+
+//	@Override
+	public int getHeight() {
+		return sprite.getHeight();
+	}
+	
+	public boolean intersects(Target target) {
+		Rectangle rect = new Rectangle(x, y, sprite.getWidth(), sprite.getHeight());
+		
+		if(rect.intersects(target.getRect())){
+			return true;
+		}
+		
+		return false;
+	}
+
+	public Rectangle getRect() {
+		return new Rectangle(x, y, sprite.getWidth(), sprite.getHeight());
+	}
+
+}
