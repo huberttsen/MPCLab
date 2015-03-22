@@ -1,27 +1,27 @@
 package com.mpc.game;
 
-import java.awt.Graphics2D;
-
-import org.lwjgl.opengl.Display;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 import com.mpc.objects.Cannon;
+import com.mpc.objects.Projectile;
+import com.mpc.objects.Target;
 
 public class Play extends BasicGameState {
-	// private static Image img;
 
-	Image map;
-	Image gun;
-	boolean quit = false;
+	Image cannonImg;
+	Image targetImg;
+	Image projImg;
 	Cannon cannon;
+	Target target;
+	Projectile proj;
+	float cannonRadius;
 
 	public Play() {
 
@@ -30,21 +30,37 @@ public class Play extends BasicGameState {
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
-		cannon = new Cannon("Blaster");
-		cannon.setPosition(50, 650);
-		
-
+		cannon = new Cannon(25, 600);
+		cannonImg = new Image("./resources/images/cannon0.png");
+		target = new Target(1100,600);
+		targetImg = new Image("./resources/images/Target.png");
+		cannonImg.setCenterOfRotation(cannonImg.getCenterOfRotationX(), cannonImg.getCenterOfRotationY());
+		proj = new Projectile(30, 600, 0, 0);
+		projImg = new Image("./resources/images/Particle.png");
+		cannonRadius = cannonImg.getWidth()/2;
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
 			throws SlickException {
-		g.setBackground(Color.blue);
+		g.setBackground(Color.lightGray);
 		g.setColor(Color.white);
 		g.drawString("Play State", 50, 50);
-		gun = new Image("./res/Cannon.png");
-		g.drawImage(gun, 50, 650);
-
+		g.drawImage(cannonImg, cannon.getX(), cannon.getY());
+		g.drawImage(targetImg,target.getX(), target.getY());
+		g.drawString("Angle: "+ String.valueOf(cannon.getAngle()), 50, 100);
+		//double ang = (double) cannon.getAngle();
+		//float projX = (float) (cannon.getX() + Math.cos(ang) * cannonRadius); 
+	    //float projY = (float) (cannon.getY() + Math.sin(ang) * cannonRadius);
+		//g.drawImage(projImg, projX, projY);
+		Input userInput = gc.getInput();
+		float mouseX = userInput.getMouseX();
+		float mouseY = userInput.getMouseY();
+		g.drawString("mouseX: "+ String.valueOf(mouseX), 50, 140);
+		g.drawString("mouseY: "+ String.valueOf(mouseY), 50, 155);
+		//g.drawString("centerX: "+ String.valueOf(cannonImg.getCenterOfRotationX()), 50, 180);
+		//g.drawString("centerY: "+ String.valueOf(cannonImg.getCenterOfRotationY()), 50, 195);
+		g.drawOval(35, 630, 10, 10);
 		
 
 	}
@@ -53,26 +69,17 @@ public class Play extends BasicGameState {
 	public void update(GameContainer gc, StateBasedGame sbg, int delta)
 			throws SlickException {
 		
-		gun = new Image("./res/Cannon.png");
-//		gun.draw(50,650);
 		Input userInput = gc.getInput();
 		float mouseX = userInput.getMouseX();
 		float mouseY = userInput.getMouseY();
-
-		/* Cannon Rotation suite */
-		// TODO: Not working.
-
-		Vector2f gunLocation = cannon.getLocation();
-		float xDistance = mouseX - gunLocation.x;
-		float yDistance = gunLocation.y - mouseY;
-		double angleToTurn = Math.toDegrees(Math.atan2(yDistance, xDistance));
-		gun.setCenterOfRotation(45, 600);
-		gun.setRotation((float) angleToTurn);
+		float xDistance = mouseX - 35;
+		float yDistance = 630 - mouseY;
+		double rad = Math.atan2(yDistance, xDistance);
+		double angleToTurn = rad * 180 / Math.PI;
+		cannonImg.setRotation((float) angleToTurn);
+		cannon.setAngle((float) angleToTurn);
 		
-		cannon.angularOffset.setValue((float) angleToTurn);
-		gun.draw(50, 650);
-
-
+		
 	}
 
 	@Override

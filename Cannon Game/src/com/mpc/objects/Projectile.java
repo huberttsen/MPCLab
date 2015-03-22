@@ -1,14 +1,9 @@
 package com.mpc.objects;
 
-//package slick.OpenShooter.game.entities.projectiles;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+
+import org.newdawn.slick.Image; 
 import org.newdawn.slick.geom.Rectangle;
-//
-import org.newdawn.slick.particles.*;
-
-//import slick.OpenShooter.game.entities.SuperObject;
 
 public class Projectile {
 	protected Image sprite = null;
@@ -25,9 +20,8 @@ public class Projectile {
 		
 	}
 	
-	public Projectile(String projectileFileName, float initX, float initY,
+	public Projectile(float initX, float initY,
 			float power, float angle) {
-		Projectile bullet = new Projectile();
 		this.x = initX;
 		this.y = initY;
 
@@ -35,12 +29,6 @@ public class Projectile {
 		
 		this.velY = (float) (Math.sin(angle) * power);
 
-		try {
-			sprite = new Image(projectileFileName);
-		} catch (SlickException e) {
-			e.printStackTrace();
-			System.exit(0);
-		}
 	}
 	
 	public void render() {

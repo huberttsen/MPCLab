@@ -1,6 +1,6 @@
 package com.mpc.game;
 
-import org.lwjgl.input.Mouse;
+import org.lwjgl.input.Mouse; 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -11,6 +11,7 @@ import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
 public class Menu extends BasicGameState {
+	
 	public Menu() {
 		
 	}
@@ -18,17 +19,16 @@ public class Menu extends BasicGameState {
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
 
-
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
 		g.setColor(Color.white);
-		g.drawString("This is the Cannon Game", 50, 50);
+		g.drawString("This is the Cannon Game Menu", 50, 50);
 		g.fillRect(50, 150, 50, 50);
 		g.setColor(Color.black);
 		g.drawString("Play", 57, 167);
-		g.setBackground(Color.blue);
+		g.setBackground(Color.darkGray);
 		
 	}
 

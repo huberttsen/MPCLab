@@ -9,5 +9,7 @@
 <fullyQualifiedTypeName name="org.newdawn.slick.Input"/>
 <fullyQualifiedTypeName name="java.awt.Color"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.Color"/>
+<fullyQualifiedTypeName name="com.mpc.objects.Target"/>
+<fullyQualifiedTypeName name="com.mpc.objects.Projectile"/>
 <fullyQualifiedTypeName name="org.newdawn.slick.Image"/>
 </qualifiedTypeNameHistroy>

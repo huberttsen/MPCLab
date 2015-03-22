@@ -1,22 +1,10 @@
 package com.mpc.game;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
-
-import javax.imageio.ImageIO;
-
-import org.lwjgl.opengl.Display;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
-//import java.applet.Applet;
-//import java.awt.*;
-//import java.awt.image.*;
-//import java.io.*;
-//import java.net.URL;
-//import javax.imageio.*;
+
 
 
 
@@ -25,7 +13,6 @@ public class Game extends StateBasedGame {
 	private static final String name = "Blaster";
 	private static final int menu = 0;
 	private static final int play = 1;
-	private static Image img;
 
 	public Game(String name) {
 		super(name);
@@ -39,7 +26,6 @@ public class Game extends StateBasedGame {
 		this.getState(menu).init(gc, this);
 		this.getState(play).init(gc, this);
 		this.enterState(menu); 
-//		this.enterState(play); //Delete this after debugging
 
 	}
 

@@ -1,7 +1,6 @@
 package com.mpc.objects;
 
-import org.newdawn.slick.Image;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.Image; 
 import org.newdawn.slick.geom.Rectangle;
 
 public class Target {
@@ -12,12 +11,21 @@ public class Target {
 	protected float velx;
 	
 	
-	public Target(String targetFileName, float x, float y){
+	public Target(float x, float y){
 		
 		this.x = x;
 		this.y = y;
 		
 	}
+	
+	public float getX() {
+		return x;
+	}
+	
+	public float getY() {
+		return y;
+	}
+	
 	public boolean intersects(Projectile projectile) {
 		Rectangle targ = new Rectangle(x, y, target.getWidth(), target.getHeight());
 		
