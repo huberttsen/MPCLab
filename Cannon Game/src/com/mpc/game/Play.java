@@ -18,6 +18,7 @@ public class Play extends BasicGameState {
 	Image cannonImg;
 	Image targetImg;
 	Image projImg;
+	Image cannonBaseImg;
 	Cannon cannon;
 	Target target;
 	Projectile proj;
@@ -30,37 +31,44 @@ public class Play extends BasicGameState {
 	@Override
 	public void init(GameContainer gc, StateBasedGame sbg)
 			throws SlickException {
-		cannon = new Cannon(25, 600);
-		cannonImg = new Image("./resources/images/cannon0.png");
+		cannonBaseImg = new Image("./resources/images/cannonbase.png");
+		cannon = new Cannon(55, 500);
+		cannonImg = new Image("./resources/images/rect.png");
 		target = new Target(1100,600);
 		targetImg = new Image("./resources/images/Target.png");
-		cannonImg.setCenterOfRotation(cannonImg.getCenterOfRotationX(), cannonImg.getCenterOfRotationY());
+		
 		proj = new Projectile(30, 600, 0, 0);
 		projImg = new Image("./resources/images/Particle.png");
-		cannonRadius = cannonImg.getWidth()/2;
+
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
 			throws SlickException {
-		g.setBackground(Color.lightGray);
+		g.setBackground(Color.darkGray);
 		g.setColor(Color.white);
 		g.drawString("Play State", 50, 50);
+		
+		g.drawImage(cannonBaseImg, 25, 600);
 		g.drawImage(cannonImg, cannon.getX(), cannon.getY());
+		
 		g.drawImage(targetImg,target.getX(), target.getY());
+		
 		g.drawString("Angle: "+ String.valueOf(cannon.getAngle()), 50, 100);
-		//double ang = (double) cannon.getAngle();
-		//float projX = (float) (cannon.getX() + Math.cos(ang) * cannonRadius); 
-	    //float projY = (float) (cannon.getY() + Math.sin(ang) * cannonRadius);
-		//g.drawImage(projImg, projX, projY);
 		Input userInput = gc.getInput();
 		float mouseX = userInput.getMouseX();
 		float mouseY = userInput.getMouseY();
 		g.drawString("mouseX: "+ String.valueOf(mouseX), 50, 140);
 		g.drawString("mouseY: "+ String.valueOf(mouseY), 50, 155);
+		
+		
+		//double ang = (double) cannon.getAngle();
+		//float projX = (float) (cannon.getX() + Math.cos(ang) * cannonRadius); 
+	    //float projY = (float) (cannon.getY() + Math.sin(ang) * cannonRadius);
+		//g.drawImage(projImg, projX, projY);
 		//g.drawString("centerX: "+ String.valueOf(cannonImg.getCenterOfRotationX()), 50, 180);
 		//g.drawString("centerY: "+ String.valueOf(cannonImg.getCenterOfRotationY()), 50, 195);
-		g.drawOval(35, 630, 10, 10);
+		
 		
 
 	}
@@ -72,11 +80,13 @@ public class Play extends BasicGameState {
 		Input userInput = gc.getInput();
 		float mouseX = userInput.getMouseX();
 		float mouseY = userInput.getMouseY();
-		float xDistance = mouseX - 35;
-		float yDistance = 630 - mouseY;
+		
+		float xDistance = mouseX - 95;
+		float yDistance = 675 - mouseY;
 		double rad = Math.atan2(yDistance, xDistance);
 		double angleToTurn = rad * 180 / Math.PI;
-		cannonImg.setRotation((float) angleToTurn);
+		cannonImg.setCenterOfRotation(40, 170);
+		cannonImg.setRotation((float) -angleToTurn);
 		cannon.setAngle((float) angleToTurn);
 		
 		
