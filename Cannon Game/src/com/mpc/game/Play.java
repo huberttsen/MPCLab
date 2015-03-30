@@ -22,7 +22,10 @@ public class Play extends BasicGameState {
 	Cannon cannon;
 	Target target;
 	Projectile proj;
+	boolean fired = false;
 	float cannonRadius;
+	float projX;
+	float projY;
 
 	public Play() {
 
@@ -39,6 +42,10 @@ public class Play extends BasicGameState {
 		
 		proj = new Projectile(30, 600, 0, 0);
 		projImg = new Image("./resources/images/Particle.png");
+		cannonRadius = (float) cannonImg.getWidth()/2;
+		double ang = (double) cannon.getAngle();
+		projX = (float) (cannon.getX() + Math.cos(ang) * cannonRadius); 
+	    projY = (float) (cannon.getY() + Math.sin(ang) * cannonRadius);
 
 	}
 
@@ -61,16 +68,11 @@ public class Play extends BasicGameState {
 		g.drawString("mouseX: "+ String.valueOf(mouseX), 50, 140);
 		g.drawString("mouseY: "+ String.valueOf(mouseY), 50, 155);
 		
-		
-		//double ang = (double) cannon.getAngle();
-		//float projX = (float) (cannon.getX() + Math.cos(ang) * cannonRadius); 
-	    //float projY = (float) (cannon.getY() + Math.sin(ang) * cannonRadius);
-		//g.drawImage(projImg, projX, projY);
-		//g.drawString("centerX: "+ String.valueOf(cannonImg.getCenterOfRotationX()), 50, 180);
-		//g.drawString("centerY: "+ String.valueOf(cannonImg.getCenterOfRotationY()), 50, 195);
-		
-		
-
+		if (fired) {
+			projX = proj.getX();
+			projY = proj.getY();
+			g.drawImage(projImg, projX, projY);
+		}
 	}
 
 	@Override
@@ -80,6 +82,11 @@ public class Play extends BasicGameState {
 		Input userInput = gc.getInput();
 		float mouseX = userInput.getMouseX();
 		float mouseY = userInput.getMouseY();
+		
+		if (userInput.isKeyPressed(Input.KEY_SPACE)) {
+			fired = true;
+			//proj.shoot();
+		}
 		
 		float xDistance = mouseX - 95;
 		float yDistance = 675 - mouseY;

@@ -1,6 +1,7 @@
 package com.mpc.objects;
 
 import org.newdawn.slick.Image; 
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 
 public class Target {
@@ -11,8 +12,8 @@ public class Target {
 	protected float velx;
 	
 	
-	public Target(float x, float y){
-		
+	public Target(float x, float y) throws SlickException{
+		target = new Image("./resources/images/Target.png");
 		this.x = x;
 		this.y = y;
 		

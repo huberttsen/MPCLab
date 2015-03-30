@@ -3,12 +3,11 @@ package com.mpc.objects;
 
 
 import org.newdawn.slick.Image; 
+import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Rectangle;
 
 public class Projectile {
 	protected Image sprite = null;
-	protected float initX;
-	protected float initY;
 	protected float velY;
 	protected float velX;
 	protected float gravity = 20f;
@@ -16,8 +15,8 @@ public class Projectile {
 	protected float x;
 	protected float y;
 
-	public Projectile(){
-		
+	public Projectile() throws SlickException{
+		sprite = new Image("./resources/images/Particle.png");
 	}
 	
 	public Projectile(float initX, float initY,
@@ -31,9 +30,6 @@ public class Projectile {
 
 	}
 	
-	public void render() {
-		
-	}
 	
 	public void shoot() {
 		
@@ -42,6 +38,14 @@ public class Projectile {
 			y += velY;
 			x += velX;
 		}
+	}
+	
+	public float getX() {
+		return x;
+	}
+	
+	public float getY() {
+		return y;
 	}
 
 	// @Override
