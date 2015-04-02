@@ -1,5 +1,13 @@
 package com.mpc.game;
 
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -26,7 +34,10 @@ public class Play extends BasicGameState {
 	float cannonRadius;
 	float projX;
 	float projY;
-
+	double angleToTurn;
+	JSlider powerSlider;
+	ProjectileShooter projectileShooter;
+	
 	public Play() {
 
 	}
@@ -46,12 +57,32 @@ public class Play extends BasicGameState {
 		double ang = (double) cannon.getAngle();
 		projX = (float) (cannon.getX() + Math.cos(ang) * cannonRadius); 
 	    projY = (float) (cannon.getY() + Math.sin(ang) * cannonRadius);
+	    
+		
+        JFrame f = new JFrame();
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        f.setSize(600,600);
 
+        projectileShooter = 
+            new ProjectileShooter();
+        ProjectileShooterPanel projectileShooterPanel = 
+            new ProjectileShooterPanel(projectileShooter);
+        projectileShooter.setPaintingComponent(projectileShooterPanel);
+
+        JPanel controlPanel = new JPanel(new GridLayout(1,0));
+        f.getContentPane().setLayout(new BorderLayout());
+        f.getContentPane().add(controlPanel, BorderLayout.NORTH);
+        f.getContentPane().add(projectileShooterPanel, BorderLayout.CENTER);
+        controlPanel.add(new JLabel("Power"));
+        powerSlider = new JSlider(0, 100, 50);
+        controlPanel.add(powerSlider);
+        f.setVisible(true);
 	}
 
 	@Override
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g)
 			throws SlickException {
+
 		g.setBackground(Color.darkGray);
 		g.setColor(Color.white);
 		g.drawString("Play State", 50, 50);
@@ -69,8 +100,12 @@ public class Play extends BasicGameState {
 		g.drawString("mouseY: "+ String.valueOf(mouseY), 50, 155);
 		
 		if (fired) {
-			projX = proj.getX();
-			projY = proj.getY();
+            
+            int power = powerSlider.getValue();
+            projectileShooter.setAngle(angleToTurn);
+            projectileShooter.setPower(power);
+            projectileShooter.shoot();
+            
 			g.drawImage(projImg, projX, projY);
 		}
 	}
@@ -91,7 +126,7 @@ public class Play extends BasicGameState {
 		float xDistance = mouseX - 95;
 		float yDistance = 675 - mouseY;
 		double rad = Math.atan2(yDistance, xDistance);
-		double angleToTurn = rad * 180 / Math.PI;
+		angleToTurn = rad * 180 / Math.PI;
 		cannonImg.setCenterOfRotation(40, 170);
 		cannonImg.setRotation((float) -angleToTurn);
 		cannon.setAngle((float) angleToTurn);
